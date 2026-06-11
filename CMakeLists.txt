@@ -16,6 +16,7 @@ option(PDG_WARNINGS       "Enable warnings"   ON)
 add_library(pdg STATIC
   src/linalg.cpp
   src/socp.cpp
+  src/rocket.cpp
   src/lcvx.cpp
   src/scvx.cpp
   src/sim.cpp

@@ -1,0 +1,12 @@
+build/
+build-*/
+out/
+*.obj
+*.o
+*.exe
+*.csv
+!examples/data/*.csv
+.vscode/
+.idea/
+CMakeUserPresets.json
+__pycache__/

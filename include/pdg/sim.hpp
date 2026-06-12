@@ -40,11 +40,11 @@ struct TouchdownState {
 // realized through the thrust vector (TVC). Roll is left uncontrolled — a
 // single gimbaled engine has no roll authority.
 struct TrackingGains {
-    double posP = 0.20;          // [1/s^2] position correction
-    double posD = 0.90;          // [1/s]   velocity correction
-    double maxCorrAccel = 2.5;   // [m/s^2] clamp on the translational correction
-    double attP = 6.0;           // [1/s^2] attitude loop
-    double attD = 5.0;           // [1/s]   rate damping
+    double posP = 0.35;          // [1/s^2] position correction
+    double posD = 1.30;          // [1/s]   velocity correction
+    double maxCorrAccel = 4.0;   // [m/s^2] clamp on the translational correction
+    double attP = 9.0;           // [1/s^2] attitude loop
+    double attD = 8.0;           // [1/s]   rate damping
 };
 
 class TrajectoryTracker {

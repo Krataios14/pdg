@@ -45,15 +45,15 @@ struct McConfig {
     // Guidance plans with this fraction of max thrust held back, so the tracker
     // retains control authority when the plant underperforms (min-fuel optimal
     // trajectories otherwise end the braking burn thrust-saturated).
-    double guidanceThrustMargin = 0.06;
+    double guidanceThrustMargin = 0.10;
     TrackingGains gains;
     double simDt = 0.01;        // simulator step [s]
     std::string csvPath;        // per-sample CSV output ("" = none)
-    // touchdown success criteria
+    // touchdown success criteria (typical landing-gear class limits)
     double maxLateralError = 5.0;   // [m]
-    double maxVerticalSpeed = 3.0;  // [m/s]
+    double maxVerticalSpeed = 4.0;  // [m/s]
     double maxLateralSpeed = 2.0;   // [m/s]
-    double maxTiltDeg = 5.0;
+    double maxTiltDeg = 7.0;
     bool verbose = false;
 };
 

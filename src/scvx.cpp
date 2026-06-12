@@ -325,11 +325,14 @@ void ScvxPlanner::assemble(double trustRadius) {
         int r = addEq(prm_.vf[i] / sx_[iV + i]); A.add(r, idxX(K_ - 1, iV + i), 1.0);
     }
     if (prm_.fixFinalAttitude) {
-        { int r = addEq(1.0); A.add(r, idxX(K_ - 1, iQ + 0), 1.0); }
-        for (int i = 1; i < 4; ++i) {
+        // upright touchdown with the roll degree of freedom left FREE: a single
+        // gimbaled engine on the roll axis has no roll authority, so demanding a
+        // specific roll angle/rate would make dispersed problems infeasible.
+        // q1 = q2 = 0 <=> zero tilt (any roll); wx = wy = 0.
+        for (int i = 1; i <= 2; ++i) {
             int r = addEq(0.0); A.add(r, idxX(K_ - 1, iQ + i), 1.0);
         }
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 2; ++i) {
             int r = addEq(0.0); A.add(r, idxX(K_ - 1, iW + i), 1.0);
         }
     }

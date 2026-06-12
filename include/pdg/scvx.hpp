@@ -72,7 +72,8 @@ struct ScvxParams {
 
     Vec3 rf = {0.0, 0.0, 0.0};
     Vec3 vf = {0.0, 0.0, -1.0};       // small terminal descent rate
-    bool fixFinalAttitude = true;     // upright, zero rates
+    bool fixFinalAttitude = true;     // upright touchdown, zero tilt rates (roll free:
+                                      // a single gimbaled engine has no roll authority)
 
     // free final time
     double tfGuess = 12.0;
@@ -89,14 +90,14 @@ struct ScvxParams {
     // discretization / SCvx (hard trust region + ratio test, Mao-Szmuk-Acikmese)
     int K = 21;                       // temporal nodes
     int rk4Substeps = 10;             // RK4 steps per interval (discretization)
-    int maxIters = 30;                // max accepted+rejected iterations
+    int maxIters = 50;                // max accepted+rejected iterations
     double wVirtual = 1e3;            // L1 penalty weight on dynamic infeasibility
     double trInit = 1.0;              // initial trust-region radius (scaled units)
     double trMin = 1e-5, trMax = 8.0; // radius bounds
     double rho0 = 0.0;                // reject step below this ratio
     double rho1 = 0.25, rho2 = 0.8;   // shrink below rho1, grow above rho2
     double trShrink = 2.0, trGrow = 2.5;
-    double tolDx = 5e-4;              // convergence: max scaled state change
+    double tolDx = 1e-3;              // convergence: max scaled state change
     double tolNu = 1e-7;              // convergence: max scaled virtual control
     double tolPred = 1e-7;            // convergence: predicted penalty reduction
     SocpSettings socp;

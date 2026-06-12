@@ -80,6 +80,12 @@ planner.solveFreeTf(40.0, 100.0, sol);   // search tf in [40, 100] s
 // sol.r, sol.v, sol.thrust, sol.mass per node; sol.tf; sol.fuelUsed
 ```
 
+![3-DoF minimum fuel descent](docs/ex_3dof_mars.png)
+
+The thrust profile is the textbook min-max bang-bang you expect from the
+minimum fuel problem: coast down at minimum throttle, then brake hard at the
+end. If your solution doesn't look like this, something is wrong.
+
 6-DoF with a state-triggered constraint:
 
 ```cpp
@@ -115,9 +121,11 @@ descent speed      : mean 1.63 m/s, max 4.69 m/s
 tilt at touchdown  : mean 1.63 deg, max 5.57 deg
 ```
 
+![Monte Carlo touchdown dispersion](docs/ex_monte_carlo.png)
+
 That run takes about 11 seconds: each sample is a full SCvx solve plus a 6-DoF
 closed-loop flight. The examples write CSVs; `examples/plot_results.py` makes
-plots if you have matplotlib.
+plots like the ones above if you have matplotlib.
 
 A note on the thrust margin: minimum fuel trajectories finish the braking burn
 at max thrust, so a plant that underperforms by even 2% leaves the autopilot

@@ -95,7 +95,7 @@ TEST(projection_onto_halfspace_soc) {
     P.h.push_back(d);
     P.cone.l = 0;
     P.cone.q = {3};
-    // reorder: cone ordering is [LP block, then SOCs] — put the LP row FIRST
+    // reorder: cone ordering is [LP block, then SOCs], so the LP row goes first
     // rebuild with LP row at index 0
     SocpProblem P2;
     P2.n = 3;

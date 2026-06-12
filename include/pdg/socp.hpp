@@ -1,4 +1,4 @@
-// pdg::socp — a small, dependency-free second-order cone programming solver
+// pdg::socp: a small, dependency-free second-order cone programming solver
 // designed along the lines of embedded conic solvers (ECOS, Clarabel):
 //
 //   minimize    c'x
@@ -11,8 +11,8 @@
 // embedding, with Nesterov-Todd scaling and a Mehrotra predictor-corrector.
 // The KKT systems are solved with a sparse LDL^T factorization whose symbolic
 // structure is computed ONCE in setup(); solve() performs no allocation, has a
-// bounded iteration count, and therefore bounded execution time — the
-// properties required for embedded / flight-software style deployment.
+// bounded iteration count, and therefore bounded execution time. Those are
+// the properties flight-software style deployment needs.
 //
 // References:
 //   A. Domahidi, E. Chu, S. Boyd, "ECOS: An SOCP solver for embedded systems",
@@ -86,8 +86,8 @@ struct SocpInfo {
 };
 
 // The solver separates setup (symbolic analysis + allocation) from solve so that
-// problems with a FIXED sparsity pattern but changing numeric data — exactly the
-// situation inside an SCvx loop — pay the symbolic cost once.
+// problems with a FIXED sparsity pattern but changing numeric data (exactly the
+// situation inside an SCvx loop) pay the symbolic cost once.
 class SocpSolver {
 public:
     SocpSolver() = default;

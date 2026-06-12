@@ -1,10 +1,10 @@
-// pdg::mc — Monte Carlo dispersion runner closing the loop between guidance
+// pdg::mc: Monte Carlo dispersion runner closing the loop between guidance
 // (pdg::scvx) and the 6-DoF simulator (pdg::sim).
 //
 // For each sample, the initial state and plant parameters are dispersed with
 // the given 1-sigma values. In `reguide` mode (the realistic configuration),
-// SCvx guidance is re-solved from each sample's dispersed initial state — the
-// onboard computer knows where it is — and the resulting trajectory is flown
+// SCvx guidance is re-solved from each sample's dispersed initial state (the
+// onboard computer knows where it is) and the resulting trajectory is flown
 // on the dispersed plant (whose thrust/Isp/misalignment errors guidance does
 // NOT know). In open-loop mode the nominal trajectory is flown from the
 // dispersed state, which demonstrates dispersion growth without guidance.

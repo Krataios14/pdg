@@ -1,10 +1,10 @@
-// pdg::linalg — minimal dense/sparse linear algebra for embedded conic optimization.
+// pdg::linalg: minimal dense/sparse linear algebra for embedded conic optimization.
 //
 // Design goals:
 //  * No external dependencies.
 //  * All memory allocated during setup (analyze); factor/solve are allocation-free.
 //  * Sparse LDL^T (Davis-style up-looking, fixed elimination tree) with static +
-//    dynamic regularization and iterative refinement — the same scheme used by
+//    dynamic regularization and iterative refinement, the same scheme used by
 //    embedded conic solvers such as ECOS.
 #pragma once
 
@@ -79,7 +79,7 @@ struct SparseCSC {
 
 // Build CSC from triplets. If `tripletMap` is non-null it receives, for each input
 // triplet, the index into the output value array (so numeric values can later be
-// rescattered without re-sorting — duplicate triplets map to the same slot).
+// rescattered without re-sorting; duplicate triplets map to the same slot).
 SparseCSC buildCSC(int rows, int cols, const Triplets& T, std::vector<int>* tripletMap = nullptr);
 
 // Re-scatter triplet values into an already-built CSC using the map from buildCSC.
@@ -90,7 +90,7 @@ void cscTMulAdd(const SparseCSC& A, const double* x, double* y, double alpha = 1
 // y += alpha * K * x where K is symmetric and only its UPPER triangle is stored.
 void symMulAdd(const SparseCSC& U, const double* x, double* y, double alpha = 1.0);
 
-// Reverse Cuthill–McKee ordering of a symmetric matrix given by its upper triangle.
+// Reverse Cuthill-McKee ordering of a symmetric matrix given by its upper triangle.
 // Nodes with degree > denseThreshold are deferred to the end of the ordering (this
 // contains fill-in from dense rows/columns such as a free-final-time variable that
 // couples every dynamics constraint). Returns perm such that newIndex = perm[oldIndex].
@@ -103,9 +103,9 @@ std::vector<int> rcmOrder(const SparseCSC& upper, int denseThreshold);
 // fill-reducing permutation (RCM with dense-node deferral, or a user permutation),
 // the elimination tree and the symbolic factor, and allocates ALL working memory.
 // `factor()` and `solve()` never allocate, so worst-case execution time is bounded
-// by the (fixed) symbolic structure — the property needed for embedded use.
+// by the (fixed) symbolic structure, which is what embedded use requires.
 //
-// Regularization: factor() applies dynamic regularization — if a pivot D[k] falls
+// Regularization: factor() applies dynamic regularization; if a pivot D[k] falls
 // below dynReg in magnitude (relative to its expected sign), it is replaced by
 // sign*dynReg. solveRefine() performs iterative refinement against the ORIGINAL
 // (unregularized) matrix to recover accuracy lost to regularization.

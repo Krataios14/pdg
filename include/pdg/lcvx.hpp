@@ -1,4 +1,4 @@
-// pdg::lcvx — 3-DoF minimum-fuel powered descent guidance via lossless
+// pdg::lcvx: 3-DoF minimum-fuel powered descent guidance via lossless
 // convexification, the algorithm lineage behind G-FOLD / Mars powered descent.
 //
 // The nonconvex minimum-fuel problem (nonconvex because of the lower thrust

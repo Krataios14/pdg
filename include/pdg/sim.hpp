@@ -1,4 +1,4 @@
-// pdg::sim — minimal 6-DoF rigid-body rocket simulator for closing the loop
+// pdg::sim: minimal 6-DoF rigid-body rocket simulator for closing the loop
 // around the guidance algorithms.
 //
 // The simulator integrates the same nonlinear dynamics as pdg::scvx (RK4,
@@ -37,7 +37,7 @@ struct TouchdownState {
 
 // PD trajectory-tracking autopilot (guidance + control loop closure):
 // translational PD correction on the planned inertial thrust, attitude PD loop
-// realized through the thrust vector (TVC). Roll is left uncontrolled — a
+// realized through the thrust vector (TVC). Roll is left uncontrolled, since a
 // single gimbaled engine has no roll authority.
 struct TrackingGains {
     double posP = 0.35;          // [1/s^2] position correction

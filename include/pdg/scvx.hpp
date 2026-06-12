@@ -1,4 +1,4 @@
-// pdg::scvx — 6-DoF free-final-time powered descent guidance via successive
+// pdg::scvx: 6-DoF free-final-time powered descent guidance via successive
 // convexification, with (compound) state-triggered constraints.
 //
 // The free final time is handled with a time-dilation variable sigma:

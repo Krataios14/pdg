@@ -246,7 +246,7 @@ std::vector<int> rcmOrder(const SparseCSC& upper, int denseThreshold) {
     std::vector<char> dense(n, 0);
     for (int v = 0; v < n; ++v) dense[v] = (deg[v] > denseThreshold) ? 1 : 0;
 
-    std::vector<int> order;            // Cuthill–McKee order of non-dense nodes
+    std::vector<int> order;            // Cuthill-McKee order of non-dense nodes
     order.reserve(n);
     std::vector<char> visited(n, 0);
     std::vector<int> queue(n);
@@ -357,7 +357,7 @@ void LDLSolver::permuteValues(const SparseCSC& upper) {
     for (int c = 0; c < n_; ++c)
         for (int k = upper.p[c]; k < upper.p[c + 1]; ++k, ++t)
             P_.x[scatterMap_[t]] += upper.x[k];
-    // trailing n_ map entries are the guaranteed diagonal (value 0) — nothing to add
+    // trailing n_ map entries are the guaranteed diagonal (value 0); nothing to add
 }
 
 bool LDLSolver::factor(const SparseCSC& upper, double staticReg, double dynReg) {

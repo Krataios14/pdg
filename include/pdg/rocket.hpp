@@ -1,4 +1,4 @@
-// pdg::rocket — shared 6-DoF rigid-body rocket model used by the SCvx guidance
+// pdg::rocket: shared 6-DoF rigid-body rocket model used by the SCvx guidance
 // (pdg/scvx.hpp) and the simulator (pdg/sim.hpp).
 //
 // State (dimension 14), inertial frame z-up, body frame z along the long axis:

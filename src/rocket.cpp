@@ -57,8 +57,8 @@ void quatSlerp(const double* a, const double* b, double t, double* out) {
 }
 
 void quatRotate(const double* q, const double* vB, double* vI) {
-    // homogeneous form (exact rotation for unit q, smooth in all of R^4 — the
-    // form whose analytic Jacobians rocketJacobians() implements):
+    // homogeneous form: exact rotation for unit q, smooth in all of R^4, and
+    // the form whose analytic Jacobians rocketJacobians() implements.
     // vI = (q0^2 - qv.qv) vB + 2 qv (qv.vB) + 2 q0 (qv x vB)
     const double q0 = q[0];
     const double* qv = q + 1;
